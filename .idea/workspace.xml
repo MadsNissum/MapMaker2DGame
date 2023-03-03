@@ -5,26 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="47558eda-338e-49eb-aebc-b1d90ac43a43" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MapMaker2DGame.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/brick.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/dirt.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/grass.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/grass_tile2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/palm_tree.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/plank.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/sand.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/tree.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/tree_tile2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/water.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ImageLoader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Map.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Window.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/tools/eraser.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Tile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ImageLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Map.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Window.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +39,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "/Users/Mads/Desktop/Datamatiker/Programmering/MapMaker2DGame/res",
+    "last_opened_file_path": "C:/Users/Mads/Desktop/My Game/Adventure2DGame",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0"
@@ -61,10 +49,20 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/res" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Mads\Desktop\My Game\MapMaker2DGame\res\tools" />
+    </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.App">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="App" />
+      <module name="MapMaker2DGame" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Test" />
       <module name="MapMaker2DGame" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -73,6 +71,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.App" />
+        <item itemvalue="Application.Test" />
       </list>
     </recent_temporary>
   </component>

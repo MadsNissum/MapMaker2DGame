@@ -4,12 +4,19 @@ import javafx.scene.image.Image;
 public class Map {
     private int[][] map;
 
-    private Image[] images;
+    private final Tile[] tiles;
+
+    public Map() {
+        ImageLoader imageLoader = new ImageLoader();
+        this.tiles = imageLoader.getTiles();
+    }
 
     public void setMap(int[][] map) {
         this.map = map;
-        ImageLoader imageLoader = new ImageLoader();
-        this.images = imageLoader.getImages();
+    }
+
+    public Tile[] getImages() {
+        return tiles;
     }
 
     public int[][] getMap() {
@@ -36,10 +43,8 @@ public class Map {
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map[0].length; j++) {
                 if (map[i][j] == 1) {
-                    System.out.println("TEST");
                 }
-                System.out.println("TEST!");
-                graphicsContext.drawImage(images[map[i][j]], i * getPixelWidth(), j * getPixelHeight(), getPixelWidth(), getPixelHeight());
+                graphicsContext.drawImage(tiles[map[i][j]], i * getPixelWidth(), j * getPixelHeight(), getPixelWidth(), getPixelHeight());
             }
         }
 

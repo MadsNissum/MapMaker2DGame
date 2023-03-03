@@ -1,25 +1,35 @@
-import javafx.scene.image.Image;
+import java.io.File;
 
 public class ImageLoader {
 
-    private Image[] images = new Image[100];
-
+    private Tile[] tiles;
     public ImageLoader() {
         setup();
     }
-
-    public Image[] getImages() {
-        return images;
+    public Tile[] getTiles() {
+        return tiles;
     }
 
     public void setup() {
-        images[1] = loadImage("brick");
-        images[2] = loadImage("dirt");
-        images[3] = loadImage("grass");
-        images[4] = loadImage("palm_tree");
+
+        File folder = new File(("res/tiles/"));
+        File[] listOfFiles = folder.listFiles();
+
+        assert listOfFiles != null;
+
+        tiles = new Tile[listOfFiles.length+1];
+
+        tiles[0] = new Tile(String.valueOf(getClass().getResource("tools/eraser.png")), "Eraser", 0);
+
+        for (int i = 0; i < listOfFiles.length; i++) {
+            if (listOfFiles[i].isFile()) {
+                String fileName = listOfFiles[i].getName().split("\\.")[0];
+                tiles[i+1] = loadImage(fileName, i+1);
+            }
+        }
     }
 
-    public Image loadImage(String str) {
-        return new Image(String.valueOf(getClass().getResource("tiles/" + str +  ".png")));
+    public Tile loadImage(String str, int index) {
+        return new Tile((String.valueOf(getClass().getResource("tiles/" + str +  ".png"))), str, index);
     }
 }
