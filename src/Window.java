@@ -17,13 +17,11 @@ import javafx.stage.Stage;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class Window extends Application {
 
-    public static final int WIDTH = 1000;
-    public static final int HEIGHT = 1000;
-    public int pen;
+    public static final int WIDTH = 650;
+    public static final int HEIGHT = 650;
     public boolean isPen;
     private final TextField txfRow = new TextField();
     private final TextField txfCol = new TextField();
@@ -32,7 +30,7 @@ public class Window extends Application {
     private final ListView<Tile> listView = new ListView<>();
     private final Canvas canvas = new Canvas(WIDTH, HEIGHT);
     private final GraphicsContext graphicsContext = canvas.getGraphicsContext2D();
-    private Map map = new Map();
+    private final Map map = new Map();
 
     private int firstX;
     private int firstY;
