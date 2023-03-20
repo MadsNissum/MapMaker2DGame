@@ -4,11 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47558eda-338e-49eb-aebc-b1d90ac43a43" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/res/tiles/IMG_4544-removebg-preview.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="47558eda-338e-49eb-aebc-b1d90ac43a43" name="Changes" comment="Map Maker 2D game - Scaled all incoming pictures to 16x16">
+      <change afterPath="$PROJECT_DIR$/res/objects/boots.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/objects/chest.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/objects/chest_open.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/objects/door.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/objects/gold_key.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/objects/wood_key.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/FileCreater.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ObjectLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ImageLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Map.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Window.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -32,16 +40,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Mads/Desktop/My Game/Adventure2DGame&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "/Users/Mads/Desktop/Datamatiker/Programmering/MapMaker2DGame/res",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/res" />
@@ -74,4 +82,8 @@
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Map Maker 2D game - Scaled all incoming pictures to 16x16" />
+    <option name="LAST_COMMIT_MESSAGE" value="Map Maker 2D game - Scaled all incoming pictures to 16x16" />
+  </component>
 </project>

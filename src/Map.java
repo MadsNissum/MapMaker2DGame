@@ -1,5 +1,4 @@
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 
 public class Map {
     private int[][] map;
@@ -42,11 +41,8 @@ public class Map {
     public void draw(GraphicsContext graphicsContext) {
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map[0].length; j++) {
-                if (map[i][j] == 1) {
-                }
                 graphicsContext.drawImage(tiles[map[i][j]], i * getPixelWidth(), j * getPixelHeight(), getPixelWidth(), getPixelHeight());
             }
         }
-
     }
 }

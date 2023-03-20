@@ -23,15 +23,21 @@ public class Window extends Application {
     public static final int WIDTH = 650;
     public static final int HEIGHT = 650;
     public boolean isPen;
-    private final TextField txfRow = new TextField();
-    private final TextField txfCol = new TextField();
+    private boolean editingObjects = false;
+    private final TextField txfMapSize = new TextField();
+    private final TextField txfMapName = new TextField();
     private final Button btnCreateCanvas = new Button("Create canvas");
+    private final Button btnCreateMap = new Button("Create map");
     private final CheckBox chbBoxTool = new CheckBox();
+    private final CheckBox chbEditObjects = new CheckBox();
     private final ListView<Tile> listView = new ListView<>();
     private final Canvas canvas = new Canvas(WIDTH, HEIGHT);
     private final GraphicsContext graphicsContext = canvas.getGraphicsContext2D();
     private final Map map = new Map();
-
+    private int[][] objects;
+    private final Image[] images = map.getImages();
+    private final ObjectLoader objectLoader = new ObjectLoader();
+    private final Image[] objectImages = objectLoader.getTiles();
     private int firstX;
     private int firstY;
     private int lastX;
@@ -58,6 +64,8 @@ public class Window extends Application {
         pane.setPadding(new Insets(20));
         pane.setVgap(10);
         pane.setHgap(10);
+
+        System.out.println(Arrays.toString(objectLoader.getTiles()));
 
         isPen = true;
 
@@ -95,46 +103,45 @@ public class Window extends Application {
         });
 
 
-        pane.add(new Label("Rows:"), 1, 0);
-        pane.add(txfRow, 2, 0);
+        pane.add(new Label("Map Size:"), 1, 0);
+        pane.add(txfMapSize, 2, 0);
 
-        pane.add(new Label("Columns:"), 1, 1);
-        pane.add(txfCol, 2, 1);
-
-        pane.add(btnCreateCanvas, 2, 2);
+        pane.add(btnCreateCanvas, 2, 1);
         btnCreateCanvas.setOnAction(actionEvent -> this.btnAction());
 
-        pane.add(new Label("Square tool"), 1, 3);
-        pane.add(chbBoxTool, 2, 3);
+        pane.add(new Label("Square tool:"), 1, 2);
+        pane.add(chbBoxTool, 2, 2);
         chbBoxTool.setOnAction(actionEvent -> isPen = !chbBoxTool.isSelected());
 
-        ArrayList<Tile> list = new ArrayList<>(Arrays.asList(map.getImages()));
+        pane.add(new Label("Edit objects:"), 1, 3);
+        pane.add(chbEditObjects, 2, 3);
+        chbEditObjects.setOnAction(actionEvent -> editObjectAction());
 
-
-        listView.setItems(FXCollections.observableList(list));
 
         pane.add(listView, 2, 4);
 
-        Image[] images = map.getImages();
+        setListViewIcons();
 
-        listView.setCellFactory(param -> new ListCell<>() {
-            private final ImageView imageView = new ImageView();
+        pane.add(new Label("Map name:"), 1, 5);
 
-            @Override
-            public void updateItem(Tile tile, boolean empty) {
-                super.updateItem(tile, empty);
-                if (empty) {
-                    setText(null);
-                    setGraphic(null);
-                } else {
-                    if (tile != null) {
-                        imageView.setImage(images[tile.getIndex()]);
-                        setText(tile.getName());
-                        setGraphic(imageView);
-                    }
-                }
-            }
-        });
+        pane.add(txfMapName, 2, 5);
+
+        pane.add(btnCreateMap, 2, 6);
+
+        btnCreateMap.setOnAction(actionEvent -> this.createAction());
+
+    }
+
+    private void editObjectAction() {
+        editingObjects = chbEditObjects.isSelected();
+        setListViewIcons();
+    }
+
+    private void createAction() {
+        if (!txfMapName.getText().isEmpty()) {
+            FileCreater.createFile(map, txfMapName.getText());
+            FileCreater.createObjectFile(objects, txfMapName.getText(), objectLoader.getTiles());
+        }
     }
 
     private void fillSquare(int firstX, int firstY, int lastX, int lastY) {
@@ -158,14 +165,20 @@ public class Window extends Application {
             int x = (int) Math.floor(action.getX() / map.getPixelWidth());
             int y = (int) Math.floor(action.getY() / map.getPixelHeight());
             if (x >= 0 && x <= map.getRows() - 1 && y >= 0 && y <= map.getColums() - 1) {
-                map.getMap()[x][y] = listView.getSelectionModel().getSelectedItem().getIndex();
+                if (chbEditObjects.isSelected()) {
+                    objects[x][y] = listView.getSelectionModel().getSelectedItem().getIndex();
+                } else {
+                    map.getMap()[x][y] = listView.getSelectionModel().getSelectedItem().getIndex();
+                }
                 draw();
             }
         }
     }
 
     private void btnAction() {
-        map.setMap(new int[Integer.parseInt(txfRow.getText())][Integer.parseInt(txfCol.getText())]);
+        map.setMap(new int[Integer.parseInt(txfMapSize.getText())][Integer.parseInt(txfMapSize.getText())]);
+        objects = new int[Integer.parseInt(txfMapSize.getText())][Integer.parseInt(txfMapSize.getText())];
+        System.out.println(objects[0][0]);
         draw();
     }
 
@@ -192,5 +205,70 @@ public class Window extends Application {
         }
 
         map.draw(graphicsContext);
+
+        double pixelWidth = WIDTH / (objects.length + 0.);
+        double pixelHeight = HEIGHT / (objects[0].length + 0.);
+
+        for (int i = 0; i < objects.length; i++) {
+            for (int j = 0; j < objects[0].length; j++) {
+                graphicsContext.drawImage(objectLoader.getTiles()[objects[i][j]], i * pixelWidth, j * pixelHeight, pixelWidth, pixelHeight);
+            }
+        }
+
+    }
+
+    private void setListViewIcons() {
+        if (editingObjects) {
+            if (chbBoxTool.isSelected()) {
+                chbBoxTool.fire();
+            }
+            chbBoxTool.setDisable(true);
+
+            ArrayList<Tile> list = new ArrayList<>(Arrays.asList(objectLoader.getTiles()));
+
+            listView.setItems(FXCollections.observableList(list));
+
+            listView.setCellFactory(param -> new ListCell<>() {
+                private final ImageView imageView = new ImageView();
+                @Override
+                public void updateItem(Tile tile, boolean empty) {
+                    super.updateItem(tile, empty);
+                    if (empty || !editingObjects) {
+                        setText(null);
+                        setGraphic(null);
+                    } else {
+                        if (tile != null) {
+                            imageView.setImage(objectImages[tile.getIndex()]);
+                            setText(tile.getName());
+                            setGraphic(imageView);
+                        }
+                    }
+                }
+            });
+
+        } else {
+            chbBoxTool.setDisable(false);
+            ArrayList<Tile> list = new ArrayList<>(Arrays.asList(map.getImages()));
+
+            listView.setItems(FXCollections.observableList(list));
+
+            listView.setCellFactory(param -> new ListCell<>() {
+                private final ImageView imageView = new ImageView();
+                @Override
+                public void updateItem(Tile tile, boolean empty) {
+                    super.updateItem(tile, empty);
+                    if (empty || editingObjects) {
+                        setText(null);
+                        setGraphic(null);
+                    } else {
+                        if (tile != null) {
+                            imageView.setImage(images[tile.getIndex()]);
+                            setText(tile.getName());
+                            setGraphic(imageView);
+                        }
+                    }
+                }
+            });
+        }
     }
 }

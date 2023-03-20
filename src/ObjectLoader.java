@@ -1,10 +1,10 @@
 import java.io.File;
 import java.util.Arrays;
 
-public class ImageLoader {
+public class ObjectLoader {
 
     private Tile[] tiles;
-    public ImageLoader() {
+    public ObjectLoader() {
         setup();
     }
     public Tile[] getTiles() {
@@ -13,7 +13,7 @@ public class ImageLoader {
 
     public void setup() {
 
-        File folder = new File(("res/tiles/"));
+        File folder = new File(("res/objects/"));
         File[] listOfFiles = folder.listFiles();
 
         assert listOfFiles != null;
@@ -33,6 +33,6 @@ public class ImageLoader {
     }
 
     public Tile loadImage(String str, int index) {
-        return new Tile((String.valueOf(getClass().getResource("tiles/" + str +  ".png"))), str, index);
+        return new Tile((String.valueOf(getClass().getResource("objects/" + str +  ".png"))), str, index);
     }
 }
